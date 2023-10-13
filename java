@@ -53,3 +53,30 @@ public class RomanNumber {
 	        return result;
 	    }
 	}
+
+import java.util.Scanner;
+
+public class Pangram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a sentence: ");
+        String inputSentence = scanner.nextLine().toLowerCase();
+
+        boolean isPangram = isPangram(inputSentence);
+        if (isPangram) {
+            System.out.println("The input is a pangram.");
+        } else {
+            System.out.println("The input is not a pangram.");
+        }
+    }
+
+    public static boolean isPangram(String sentence) {
+        for (char ch = 'a'; ch <= 'z'; ch++) {
+            if (sentence.indexOf(ch) == -1) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
