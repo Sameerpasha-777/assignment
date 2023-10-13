@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body{
+            background: rgb(167, 165, 165);
+        }
+        .calculator {
+            width: 300px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        input[type="text"] {
+            width: 67.4%;
+            font-size: 20px;
+          
+        }
+
+        .btn {
+            width: 70px;
+            height: 70px;
+            font-size: 24px;
+            color: #f0f0f0;
+            cursor: pointer;
+            background-color: #0c0707;
+            border: 1px solid #0c0808;
+        }
+
+        .btn:hover {
+            background-color: #ccc;
+            color: #0c0707;
+        }
+        .btn1{
+            width: 70px;
+            height: 70px;
+            font-size: 24px;
+            color: #f0f0f0;
+            cursor: pointer;
+            background-color: grey;
+            border: 1px solid grey;
+        }
+        .btn1:hover {
+            background-color: skyblue;
+            color: #0c0707;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator" style="display: flex;flex-direction: column;">
+        <div class="upper" style="display: flex;flex-direction: row;">    
+        <input type="text" id="display" disabled>
+        <button class="btn" style="background-color: rgb(22, 107, 79);" onmouseover="this.style.backgroundColor = 'red'" onmouseout="this.style.backgroundColor = 'rgb(22, 107, 79)'"  onclick="clearDisplay()">AC</button>
+    </div>
+        <div style="display: flex;flex-direction: row;">
+            <button class="btn" onclick="appendToDisplay('9')">9</button>
+            <button class="btn" onclick="appendToDisplay('8')">8</button>
+            <button class="btn" onclick="appendToDisplay('7')">7</button>
+            <button class="btn1" onclick="appendToDisplay('+')">+</button>
+        </div>
+        <div style="display: flex;flex-direction: row;">
+            <button class="btn" onclick="appendToDisplay('4')">4</button>
+            <button class="btn" onclick="appendToDisplay('5')">5</button>
+            <button class="btn" onclick="appendToDisplay('6')">6</button>
+            <button class="btn1" onclick="appendToDisplay('-')">-</button>
+        </div>
+        <div style="display: flex;flex-direction: row;">
+            <button class="btn" onclick="appendToDisplay('1')">1</button>
+            <button class="btn" onclick="appendToDisplay('2')">2</button>
+            <button class="btn" onclick="appendToDisplay('3')">3</button>
+            <button class="btn1" onclick="appendToDisplay('/')">/</button>
+        </div>
+        <div style="display: flex;flex-direction: row;">
+            <button class="btn" onclick="appendToDisplay('.')">.</button>
+            <button class="btn" onclick="appendToDisplay('0')">0</button>
+            <button class="btn" onclick="calculateResult('=')">=</button>
+            <button class="btn1" onclick="appendToDisplay('*')">x</button>
+        </div>
+        
+    </div>
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById("display").value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        function calculateResult() {
+            const displayValue = document.getElementById("display").value;
+            try {
+                document.getElementById("display").value = eval(displayValue);
+            } catch (error) {
+                document.getElementById("display").value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
